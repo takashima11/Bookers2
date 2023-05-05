@@ -10,46 +10,58 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <div>
-        <a href="/">Bookers</a>
-      </div>
+  <body class="d-flex flex-column vh-100">
+    <header class="bg-dark text-white pt-5 pb-4">
+      <nav class="navbar navbar-expand-lg navbar-light"></nav>
+        <div class="container">
+          <div class="row">
+              <a href="/">Bookers</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
 
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "Home",user_path(current_user.id) %>
-        </li>
-        <li>
-          <a href="/users">Users</a>
-        </li>
-        <li>
-          <a href="/books">Books</a>
-        </li>
-        <li>
-          <%= link_to "Log out",destroy_user_session_path,method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/home/about">About</a>
-        </li>
-        <li>
-          <%= link_to "Sign up",new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "Log in",new_user_session_path %>
-        </li>
-      <% end %>
+                <% if user_signed_in? %>
+                  <li>
+                    <%= link_to "Home",user_path(current_user.id) %>
+                  </li>
+                  <li>
+                    <a href="/users">Users</a>
+                  </li>
+                  <li>
+                    <a href="/books">Books</a>
+                  </li>
+                  <li>
+                    <%= link_to "Log out",destroy_user_session_path,method: :delete %>
+                  </li>
+                <% else %>
+                  <li>
+                    <a href="/">Home</a>
+                  </li>
+                  <li>
+                    <a href="/home/about">About</a>
+                  </li>
+                  <li>
+                    <%= link_to "Sign up",new_user_registration_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Log in",new_user_session_path %>
+                  </li>
+                <% end %>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </nav>
     </header>
 
 
     <%= yield %>
 
     <footer>
-      <div>
+      <div class="container">
         <p>CopyRight Infratop.inc</p>
       </div>
     </footer>
