@@ -1,15 +1,43 @@
-<h1>Users</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h1>User info</h1>
+      <%= image_tag @user.get_profile_image(100,100) %>
+      <p>name
+      <span><%= @user.name %></span>
+      </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th colspan="1"></th>
-    </tr>  
-  </thead> 
-  
-  <tbody>
-    
-  </tbody>
-</table>
+      <p>introduction
+      <span><%= @user.introduction %></span></p>
+
+      <p><%= link_to "マイページ",edit_user_path(@user) %></p>
+
+      <h1>New book</h1>
+      <%= form_with model: @book,local: true do |f| %>
+        <h4>Title</h4>
+        <%= f.text_field :title %>
+
+        <h4>Opinion</h4>
+        <%= f.text_area :body %>
+
+        <%= f.submit 'Create Book',class: "btn btn-success" %>
+      <% end %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h1>Users</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
