@@ -10,7 +10,11 @@
       <p>introduction
       <span><%= @user.introduction %></span></p>
 
-      <p><%= link_to "マイページ",edit_user_path(@user) %></p>
+      <div class="row">
+        <%= link_to edit_user_path(@user),class: "btn btn-outline-secondary btn-block" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      </div>
 
       <h1>New book</h1>
       <%= form_with model: @book,local: true do |f| %>
@@ -35,7 +39,15 @@
         </thead>
 
         <tbody>
+          <% @users.each do |user| %>
+            <tr>
 
+              <td><%= image_tag user.get_profile_image(50,50) %></td>
+              <td><%= user.name %></td>
+              <td><%= link_to 'Show',user_path(user.id) %></td>
+
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
