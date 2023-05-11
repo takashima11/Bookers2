@@ -25,7 +25,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.new
+    @book_new = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
     @books = Book.limit(1)
@@ -35,12 +35,17 @@ class BooksController < ApplicationController
 
 
   def edit
-    user = User.find(params[:id])
-    unless user.id == current_user.id
+    @book = Book.find(params[:id])
+    # unless user.id == current_user.id
+    #   redirect_to books_path
+    # end
+    if @book.user == current_user
+      render :edit
+    else
       redirect_to books_path
     end
 
-    @book = Book.find(params[:id])
+
   end
 
   def update
