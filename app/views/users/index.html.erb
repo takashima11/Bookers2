@@ -1,20 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <h1>User info</h1>
-      <%= image_tag @user.get_profile_image(100,100) %>
-      <p>name
-      <span><%= @user.name %></span>
-      </p>
 
-      <p>introduction
-      <span><%= @user.introduction %></span></p>
-
-      <div class="row">
-        <%= link_to edit_user_path(@user),class: "btn btn-outline-secondary btn-block" do %>
-          <i class="fas fa-user-cog"></i>
-        <% end %>
-      </div>
+      <%= render 'books/list', user: @user %>
 
       <h1>New book</h1>
       <%= form_with model: @book,local: true do |f| %>
